@@ -13,7 +13,11 @@
     <ul>
         {% for i, todo in enumerate(todos) %}
             <li>
-                <strike>{{ todo.task }}</strike> if todo.done else {{ todo.task }}
+                {% if todo.done %}
+                    <strike>{{ todo.task }}</strike>
+                {% else %}
+                    {{ todo.task }}
+                {% endif %}
                 <a href="{{ url_for('check', index=i) }}">✔</a>
                 <a href="{{ url_for('edit', index=i) }}">✏</a>
                 <a href="{{ url_for('delete', index=i) }}">❌</a>
@@ -22,3 +26,4 @@
     </ul>
 </body>
 </html>
+
